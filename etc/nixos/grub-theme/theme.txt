@@ -1,0 +1,21 @@
+title-text: ""
+desktop-color: "#000000"
+terminal-font: "JetBrainsMono 16"
+terminal-left: "0"
+terminal-top: "0"
+terminal-width: "100%"
+terminal-height: "100%"
+
++ boot_menu {
+  left = 20%
+  top = 30%
+  width = 60%
+  height = 50%
+  item_font = "JetBrainsMono 16"
+  item_color = "#000066"
+  selected_item_color = "#000099"
+  selected_item_pixmap_style = "none"
+  item_height = 32
+  item_padding = 10
+  item_spacing = 10
+}

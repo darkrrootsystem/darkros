@@ -1,0 +1,11 @@
+[Unit]
+Description=Kanata key remapper
+Documentation=https://github.com/jtroo/kanata
+
+[Service]
+Environment=PATH=/run/current-system/sw/bin:/usr/bin:/bin
+ExecStart=/run/current-system/sw/bin/kanata --cfg %h/.config/kanata/kanata.kbd
+Restart=always
+
+[Install]
+WantedBy=default.target

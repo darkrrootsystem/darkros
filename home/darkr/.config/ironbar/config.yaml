@@ -1,0 +1,37 @@
+position: top
+height: 30
+icon_theme: "Tela-circle-nord"
+margin:
+  top: 5
+  left: 10
+  right: 10
+
+features:
+  battery: true
+
+start:
+  - type: workspaces
+
+center:
+  - type: clock
+    format: "%Y-%m-%d %H:%M:%S"
+
+end:
+  - type: script
+    name: language
+    class: language
+    cmd: "niri msg -j keyboard-layouts | jq -r '.names[.current_idx] | sub(\"English.*\"; \"EN\") | sub(\"Ukrainian.*\"; \"UA\")'"
+    interval: 500
+    on_click_left: "niri msg action switch-layout next"
+  - type: volume
+    format: "{icon} {percentage}%"
+    on_scroll_up: "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
+    on_scroll_down: "wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
+    on_click_right: "openrgb --profile darkr"
+    icons:
+      volume_high: " "
+      volume_medium: " "
+      volume_low: " "
+      muted: "󰝟 "
+  - type: tray
+    spacing: 10

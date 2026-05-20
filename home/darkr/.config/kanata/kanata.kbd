@@ -1,0 +1,15 @@
+(defsrc
+  lalt h j k l
+)
+
+(defalias
+  nav (layer-while-held arrows)
+)
+
+(deflayer default
+  @nav h j k l
+)
+
+(deflayer arrows
+  _ left down up right
+)

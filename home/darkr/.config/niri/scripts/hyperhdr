@@ -1,0 +1,6 @@
+pkill -9 hyperhdr
+steam-run hyperhdr
+pkill -9 hyperhdr
+steam-run hyperhdr
+pkill -9 hyperhdr
+steam-run hyperhdr

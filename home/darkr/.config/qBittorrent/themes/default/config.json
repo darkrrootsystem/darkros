@@ -1,0 +1,13 @@
+{
+    "colors.dark": {
+        "Log.Normal": "#000000",
+        "RSS.ReadArticle": "#000000",
+        "RSS.UnreadArticle": "#000000"
+    },
+    "colors.light": {
+        "Log.Normal": "#000000",
+        "RSS.ReadArticle": "#000000",
+        "RSS.UnreadArticle": "#000000"
+    },
+    "version": 2
+}

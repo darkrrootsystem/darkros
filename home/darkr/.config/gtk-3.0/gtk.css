@@ -1,0 +1,45 @@
+* {
+    background-image: none !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    -gtk-icon-shadow: none !important;
+}
+
+window, grid, headerbar, notebook, stack, scrolledwindow, viewport, box, list, row {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: none !important;
+}
+
+menu, menubar, popover, .menu, .menubar, .popover {
+    background-color: #050505 !important;
+    border: 1px solid #0055ff !important;
+    color: #ffffff !important;
+}
+
+button {
+    background-color: #0a0a0a !important;
+    color: #eeeeee !important;
+    border: 1px solid #222222 !important;
+    border-radius: 0px !important;
+}
+
+button:hover {
+    border-color: #0055ff !important;
+    background-color: #111111 !important;
+}
+
+entry, textview text {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #0055ff !important;
+}
+
+selection, entry:selected, textview text:selected {
+    background-color: #0055ff !important;
+    color: #ffffff !important;
+}
+
+.background, .bar {
+    background-color: #000000 !important;
+}

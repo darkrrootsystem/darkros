@@ -1,0 +1,220 @@
+include "monitors.conf"
+
+spawn-at-startup "zsh" "-c" "~/.config/niri/scripts/niri-monitors"
+spawn-at-startup "zsh" "-c" "hyprpaper"
+spawn-at-startup "ironbar"
+spawn-at-startup "xwayland-satellite"
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+spawn-at-startup "openrgb" "--profile" "darkr"
+
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+C { close-window; }
+    Mod+Tab { focus-workspace-previous; }
+    Print { screenshot; }
+    Mod+Print { screenshot-screen; }
+    Mod+Ctrl+Q { quit skip-confirmation=true; }
+    Mod+Alt+P hotkey-overlay-title="poweroff monitors" { power-off-monitors; }
+    Mod+Q hotkey-overlay-title="kitty" { spawn "kitty"; }
+    Mod+W hotkey-overlay-title="firefox" { spawn "firefox"; }
+    Mod+A hotkey-overlay-title="anyrun" { spawn "zsh" "-c" "pkill anyrun || anyrun"; }
+    Mod+Shift+D hotkey-overlay-title="profiles" { spawn "zsh" "-c" "pkill anyrun || ~/.config/anyrun/niri-launcher"; }
+    Mod+Shift+W hotkey-overlay-title="ironbar toggle" { spawn "zsh" "-c" "~/.config/niri/scripts/ironbar-toggle"; }
+    Mod+Shift+A hotkey-overlay-title="HyperHDR" { spawn "zsh" "-c" "~/.config/niri/scripts/hyperhdr"; } 
+    Mod+P { spawn "zsh" "-c" "playerctl play-pause"; }
+    Mod+M { spawn "zsh" "-c" "~/.config/niri/scripts/mute-toggle"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "+5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "-5"; }
+    XF86AudioMute        allow-when-locked=true { spawn "swayosd-client" "--output-volume" "mute-toggle"; }
+    XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+
+    XF86MonBrightnessDown allow-when-locked=true { spawn "swayosd-client" "--brightness" "-5"; }
+    XF86MonBrightnessUp allow-when-locked=true { spawn "swayosd-client" "--brightness" "+5"; }
+
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-down; }
+    Mod+K { focus-window-up; }
+    Mod+L { focus-column-right; }
+
+    Mod+Shift+H { move-column-left; }
+    Mod+Shift+J { move-window-down; }
+    Mod+Shift+K { move-window-up; }
+    Mod+Shift+L { move-column-right; }
+
+    Mod+Ctrl+H { focus-monitor-left; }
+    Mod+Ctrl+L { focus-monitor-right; }
+    Mod+Shift+Ctrl+H { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+L { move-column-to-monitor-right; }
+    
+    Mod+Ctrl+J { focus-workspace-down; }
+    Mod+Ctrl+K { focus-workspace-up; }
+    Mod+Shift+Ctrl+J { move-column-to-workspace-down; }
+    Mod+Shift+Ctrl+K { move-column-to-workspace-up; }
+
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight { focus-column-right; }
+    Mod+WheelScrollLeft  { focus-column-left; }
+
+    Mod+1 { focus-workspace "1"; }
+    Mod+2 { focus-workspace "2"; }
+    Mod+3 { focus-workspace "3"; }
+    Mod+4 { focus-workspace "4"; }
+    Mod+5 { focus-workspace "5"; }
+    Mod+6 { focus-workspace "6"; }
+    Mod+7 { focus-workspace "7"; }
+    Mod+8 { focus-workspace "8"; }
+    Mod+9 { focus-workspace "9"; }
+    Mod+0 { focus-workspace "0"; }
+    
+    Mod+Shift+1 { move-column-to-workspace "1"; }
+    Mod+Shift+2 { move-column-to-workspace "2"; }
+    Mod+Shift+3 { move-column-to-workspace "3"; }
+    Mod+Shift+4 { move-column-to-workspace "4"; }
+    Mod+Shift+5 { move-column-to-workspace "5"; }
+    Mod+Shift+6 { move-column-to-workspace "6"; }
+    Mod+Shift+7 { move-column-to-workspace "7"; }
+    Mod+Shift+8 { move-column-to-workspace "8"; }
+    Mod+Shift+9 { move-column-to-workspace "9"; }
+    Mod+Shift+0 { move-column-to-workspace "0"; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+V { switch-preset-column-width; }
+    Mod+Alt+K { switch-preset-window-height; }
+    Mod+Alt+J { reset-window-height; }
+    Mod+backslash { maximize-column; }
+    Mod+F { fullscreen-window; }
+
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    Mod+Shift+T { toggle-column-tabbed-display; }
+    Mod+S       { toggle-window-floating; }
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ua"
+            options "grp:win_space_toggle"
+        }
+    }
+    touchpad {
+        tap
+        dwt
+        natural-scroll
+        accel-speed 0.3
+    }
+    mouse {
+        accel-speed 0.2
+    }
+    workspace-auto-back-and-forth
+    focus-follows-mouse max-scroll-amount="0%"
+}
+
+layout {
+    gaps 9
+    center-focused-column "never"
+    default-column-width { proportion 0.5; }
+
+    preset-column-widths {
+        proportion 0.25
+        proportion 0.5
+        proportion 0.75
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.2
+        proportion 0.4
+        proportion 0.5
+        proportion 0.6
+        proportion 0.8
+    }
+
+    focus-ring {
+        width 2
+        active-color "#2050f5"
+        inactive-color "#45475A"     
+    }
+
+    shadow {
+        on
+        softness 20
+        spread 7
+        offset x=-1 y=-5
+        color "#0077"
+    }
+    
+    border { off; }
+}
+
+animations {
+    off
+}
+
+window-rule {
+    match title="^(file_progress|confirm|dialog|download|notification|error|splash|nwg-look|confirmreset|Delete profile)$"
+    match title="^File Operation Progress$"
+    match title="^Confirm to replace files$"
+    match title="^(Open File|Select a File|Choose wallpaper|Open Folder|Save As|Library|File Upload).*"
+    match app-id="^org.qbittorrent.qBittorrent$"
+    open-floating true
+}
+
+window-rule {
+    match app-id="mpv$"
+    open-fullscreen true
+}
+
+window-rule {
+    geometry-corner-radius 6
+    clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="^launcher$"
+    opacity 1.0
+}
+
+layer-rule {
+    match namespace="gtk-layer-shell"
+    match at-startup=true
+    shadow {
+        on
+        softness 10
+        spread 1
+        offset x=0 y=1
+        draw-behind-window true
+        color "#00000030"
+    }
+}
+
+environment {
+    QT_QPA_PLATFORM "wayland"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    MOZ_ENABLE_WAYLAND "1" 
+}
+
+cursor {
+    xcursor-theme "Nordzy-cursors"
+    xcursor-size 24
+    hide-when-typing
+}
+
+hotkey-overlay {
+    skip-at-startup
+}
+
+prefer-no-csd
+screenshot-path "~/Screenshots/%Y-%m-%d %H-%M-%S.png"
